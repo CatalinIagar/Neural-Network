@@ -51,6 +51,10 @@
   <ItemGroup>
     <Compile Include="Classes\BankData.cs" />
     <Compile Include="Classes\DataEnums.cs" />
+    <Compile Include="Classes\InputData.cs" />
+    <Compile Include="Classes\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +63,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataPanel.Designer.cs">
+      <DependentUpon>DataPanel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DataPanel.resx">
+      <DependentUpon>DataPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

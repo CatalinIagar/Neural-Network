@@ -22,14 +22,12 @@ namespace Proiect3.Classes
             retired,
             unknown
         }
-
         public enum MaritalStatus
         {
-            married,
+            divorced,
             single,
-            divorced
+            married
         }
-
         public enum Education
         {
             primary,
@@ -37,32 +35,27 @@ namespace Proiect3.Classes
             tertiary,
             unknown
         }
-
         public enum Default
         {
             no, 
             yes
         }
-
         public enum Housing
         {
             no,
             yes
         }
-
         public enum Loan
         {
             no,
             yes
         }
-
         public enum Contact
         {
             cellular,
-            unknown,
-            telephone
+            telephone,
+            unknown
         }
-
         public enum Month
         {
             jan, 
@@ -78,15 +71,13 @@ namespace Proiect3.Classes
             nov,
             dec
         }
-
         public enum PrevoisOutcome
         {
+            failure,
             unknown,
-            failure, 
-            success,
-            other
+            other,
+            success
         }
-
         public enum Outcome
         {
             no,
