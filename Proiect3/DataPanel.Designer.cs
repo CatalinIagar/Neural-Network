@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.roundButton2 = new Proiect3.RoundButton();
-            this.roundButton1 = new Proiect3.RoundButton();
+            this.nrmBtn = new Proiect3.RoundButton();
+            this.convertBtn = new Proiect3.RoundButton();
+            this.loadBtn = new Proiect3.RoundButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,51 +45,72 @@
             this.dataGridView1.Size = new System.Drawing.Size(1009, 700);
             this.dataGridView1.TabIndex = 2;
             // 
-            // roundButton2
+            // nrmBtn
             // 
-            this.roundButton2.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.roundButton2.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.roundButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.roundButton2.BorderRadius = 10;
-            this.roundButton2.BorderSize = 0;
-            this.roundButton2.FlatAppearance.BorderSize = 0;
-            this.roundButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton2.ForeColor = System.Drawing.Color.White;
-            this.roundButton2.Location = new System.Drawing.Point(20, 65);
-            this.roundButton2.Name = "roundButton2";
-            this.roundButton2.Size = new System.Drawing.Size(75, 20);
-            this.roundButton2.TabIndex = 1;
-            this.roundButton2.Text = "Normalize";
-            this.roundButton2.TextColor = System.Drawing.Color.White;
-            this.roundButton2.UseVisualStyleBackColor = false;
+            this.nrmBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.nrmBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.nrmBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.nrmBtn.BorderRadius = 10;
+            this.nrmBtn.BorderSize = 0;
+            this.nrmBtn.FlatAppearance.BorderSize = 0;
+            this.nrmBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nrmBtn.ForeColor = System.Drawing.Color.White;
+            this.nrmBtn.Location = new System.Drawing.Point(20, 104);
+            this.nrmBtn.Name = "nrmBtn";
+            this.nrmBtn.Size = new System.Drawing.Size(75, 20);
+            this.nrmBtn.TabIndex = 3;
+            this.nrmBtn.Text = "Normalize";
+            this.nrmBtn.TextColor = System.Drawing.Color.White;
+            this.nrmBtn.UseVisualStyleBackColor = false;
+            this.nrmBtn.Click += new System.EventHandler(this.nrmBtn_Click);
             // 
-            // roundButton1
+            // convertBtn
             // 
-            this.roundButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.roundButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.roundButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.roundButton1.BorderRadius = 10;
-            this.roundButton1.BorderSize = 0;
-            this.roundButton1.FlatAppearance.BorderSize = 0;
-            this.roundButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.roundButton1.ForeColor = System.Drawing.Color.White;
-            this.roundButton1.Location = new System.Drawing.Point(20, 25);
-            this.roundButton1.Name = "roundButton1";
-            this.roundButton1.Size = new System.Drawing.Size(75, 20);
-            this.roundButton1.TabIndex = 0;
-            this.roundButton1.Text = "Load";
-            this.roundButton1.TextColor = System.Drawing.Color.White;
-            this.roundButton1.UseVisualStyleBackColor = false;
-            this.roundButton1.Click += new System.EventHandler(this.roundButton1_Click);
+            this.convertBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.convertBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.convertBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.convertBtn.BorderRadius = 10;
+            this.convertBtn.BorderSize = 0;
+            this.convertBtn.FlatAppearance.BorderSize = 0;
+            this.convertBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.convertBtn.ForeColor = System.Drawing.Color.White;
+            this.convertBtn.Location = new System.Drawing.Point(20, 65);
+            this.convertBtn.Name = "convertBtn";
+            this.convertBtn.Size = new System.Drawing.Size(75, 20);
+            this.convertBtn.TabIndex = 1;
+            this.convertBtn.Text = "Convert";
+            this.convertBtn.TextColor = System.Drawing.Color.White;
+            this.convertBtn.UseVisualStyleBackColor = false;
+            this.convertBtn.Click += new System.EventHandler(this.convertBtn_Click);
+            // 
+            // loadBtn
+            // 
+            this.loadBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.loadBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.loadBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.loadBtn.BorderRadius = 10;
+            this.loadBtn.BorderSize = 0;
+            this.loadBtn.FlatAppearance.BorderSize = 0;
+            this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadBtn.ForeColor = System.Drawing.Color.White;
+            this.loadBtn.Location = new System.Drawing.Point(20, 25);
+            this.loadBtn.Name = "loadBtn";
+            this.loadBtn.Size = new System.Drawing.Size(75, 20);
+            this.loadBtn.TabIndex = 0;
+            this.loadBtn.Text = "Load";
+            this.loadBtn.TextColor = System.Drawing.Color.White;
+            this.loadBtn.UseVisualStyleBackColor = false;
+            this.loadBtn.Click += new System.EventHandler(this.roundButton1_Click);
             // 
             // DataPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this.nrmBtn);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.roundButton2);
-            this.Controls.Add(this.roundButton1);
+            this.Controls.Add(this.convertBtn);
+            this.Controls.Add(this.loadBtn);
             this.Location = new System.Drawing.Point(0, 100);
             this.Name = "DataPanel";
             this.Size = new System.Drawing.Size(1124, 700);
@@ -99,8 +121,9 @@
 
         #endregion
 
-        private RoundButton roundButton1;
-        private RoundButton roundButton2;
+        private RoundButton loadBtn;
+        private RoundButton convertBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private RoundButton nrmBtn;
     }
 }

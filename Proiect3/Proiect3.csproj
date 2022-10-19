@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BankData.cs" />
+    <Compile Include="Classes\BankDataNormalised.cs" />
     <Compile Include="Classes\DataEnums.cs" />
     <Compile Include="Classes\InputData.cs" />
     <Compile Include="Classes\RoundButton.cs">
@@ -93,6 +94,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="resources\bank-full.csv" />
     <None Include="resources\bank.csv" />
   </ItemGroup>
   <ItemGroup>

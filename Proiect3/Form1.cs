@@ -19,6 +19,7 @@ namespace Proiect3
             InitializeComponent();
 
             dataBtn.Click += (sender, e) => LoadDataPanel(sender, e);
+            this.MaximizeBox = false;
 
         }
 
