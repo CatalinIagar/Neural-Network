@@ -1,23 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using System.Reflection;
 using Proiect3.Classes;
-using System.Collections;
 
 namespace Proiect3
 {
     public partial class DataPanel : UserControl
     {
-        readonly List<BankData> dataList = new List<BankData>();
-        List<BankDataNormalised> normalizedData = new List<BankDataNormalised>();
         private DataPanel() 
         {
             InitializeComponent();
@@ -32,7 +20,6 @@ namespace Proiect3
                 return instance;
             }
         }
-
         private void roundButton1_Click(object sender, EventArgs e)
         {
             dataGridView1.Visible = true;
@@ -41,15 +28,11 @@ namespace Proiect3
             convertBtn.Visible = true;
             ShowData(CurrentData.Instance.getData());
         }
-
-        
         private void ShowData(Object list)
         {
             dataGridView1.DataSource = list;
             dataGridView1.Refresh();
         }
-        
-
         private void nrmBtn_Click(object sender, EventArgs e)
         {
             CurrentData.Instance.Normalize();
@@ -58,17 +41,14 @@ namespace Proiect3
             dataBtn.Visible = true;
             nrmDataBtn.Visible = true;
         }
-
         private void dataBtn_Click(object sender, EventArgs e)
         {
             ShowData(CurrentData.Instance.getData());
         }
-
         private void nrmDataBtn_Click(object sender, EventArgs e)
         {
             ShowData(CurrentData.Instance.getNormData());
         }
-
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex == 0) MessageBox.Show("Client's age");
@@ -89,7 +69,6 @@ namespace Proiect3
             if (e.ColumnIndex == 15) MessageBox.Show("Outcome of the previous marketing campaign");
             if (e.ColumnIndex == 16) MessageBox.Show("Has the client subscribed a term deposit?");
         }
-
         private void convertBtn_Click(object sender, EventArgs e)
         {
             this.convertBtn.Enabled = false;

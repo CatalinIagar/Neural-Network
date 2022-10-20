@@ -25,17 +25,14 @@ namespace Proiect3.Classes
                 return instance;
             }
         }
-
         public Object getData()
         {
             return this.dataList;
         }
-
         public Object getNormData()
         {
             return this.normalizedData;
         }
-
         public void ReadFromFile()
         {
             using (var reader = new StreamReader(@"C:\Faculta\Ai\Proiect3\Proiect3\resources\bank.csv"))
@@ -60,7 +57,6 @@ namespace Proiect3.Classes
                 Console.WriteLine("Data read succes");
             }
         }
-
         public void ConvertData()
         {
             foreach (BankData data in dataList)
@@ -89,10 +85,28 @@ namespace Proiect3.Classes
             }
         }
 
+        public (double max, double min) getMinMax(PropertyInfo property)
+        {
+            double min = (double)property.GetValue(normalizedData[0], null);
+            double max = (double)property.GetValue(normalizedData[0], null);
+            foreach (var data in normalizedData)
+            {
+                double value = (double)property.GetValue(data, null);
+                if (min > value) min = value;
+                if (value > max) max = value;
+            }
+            Console.WriteLine(max.ToString() + " " + min.ToString());
+            return (max, min);
+        }
         public void Normalize()
         {
-            double[] max = new double[17];
-            double[] min = new double[17];
+
+            PropertyInfo[] properties = typeof(BankDataNormalised).GetProperties();
+
+            /*
+
+            double[] max = new double[properties.Count()];
+            double[] min = new double[properties.Count()];
 
             max[0] = normalizedData.Max(r => r.Age);
             min[0] = normalizedData.Min(r => r.Age);
@@ -129,7 +143,7 @@ namespace Proiect3.Classes
             max[16] = normalizedData.Max(r => r.Outcome);
             min[16] = normalizedData.Min(r => r.Outcome);
 
-            PropertyInfo[] properties = typeof(BankDataNormalised).GetProperties();
+
 
             foreach (var data in normalizedData)
             {
@@ -139,6 +153,16 @@ namespace Proiect3.Classes
                     double value = (double)property.GetValue(data, null);
                     property.SetValue(data, (value - min[i]) / (max[i] - min[i]));
                     i++;
+                }
+            }*/
+
+            foreach(PropertyInfo property in properties)
+            {
+                var (max, min) = getMinMax(property);
+                foreach(var data in normalizedData)
+                {
+                    double value = (double)property.GetValue(data, null);
+                    property.SetValue(data, (value - min) / (max - min));
                 }
             }
         }
