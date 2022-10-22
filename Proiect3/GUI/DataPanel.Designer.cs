@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.countTBox = new System.Windows.Forms.TextBox();
+            this.testBtn = new Proiect3.RoundButton();
+            this.trainBtn = new Proiect3.RoundButton();
             this.nrmDataBtn = new Proiect3.RoundButton();
             this.dataBtn = new Proiect3.RoundButton();
             this.nrmBtn = new Proiect3.RoundButton();
@@ -47,7 +50,56 @@
             this.dataGridView1.Size = new System.Drawing.Size(1009, 700);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.Visible = false;
-            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridView1_ColumnHeaderMouseClick);
+            // 
+            // countTBox
+            // 
+            this.countTBox.Enabled = false;
+            this.countTBox.Location = new System.Drawing.Point(20, 460);
+            this.countTBox.Name = "countTBox";
+            this.countTBox.Size = new System.Drawing.Size(75, 20);
+            this.countTBox.TabIndex = 8;
+            this.countTBox.Visible = false;
+            // 
+            // testBtn
+            // 
+            this.testBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.testBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.testBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.testBtn.BorderRadius = 10;
+            this.testBtn.BorderSize = 0;
+            this.testBtn.FlatAppearance.BorderSize = 0;
+            this.testBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.testBtn.ForeColor = System.Drawing.Color.White;
+            this.testBtn.Location = new System.Drawing.Point(20, 254);
+            this.testBtn.Name = "testBtn";
+            this.testBtn.Size = new System.Drawing.Size(75, 20);
+            this.testBtn.TabIndex = 7;
+            this.testBtn.Text = "Test Data";
+            this.testBtn.TextColor = System.Drawing.Color.White;
+            this.testBtn.UseVisualStyleBackColor = false;
+            this.testBtn.Visible = false;
+            this.testBtn.Click += new System.EventHandler(this.TestBtn_Click);
+            // 
+            // trainBtn
+            // 
+            this.trainBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.trainBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.trainBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.trainBtn.BorderRadius = 10;
+            this.trainBtn.BorderSize = 0;
+            this.trainBtn.FlatAppearance.BorderSize = 0;
+            this.trainBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.trainBtn.ForeColor = System.Drawing.Color.White;
+            this.trainBtn.Location = new System.Drawing.Point(20, 217);
+            this.trainBtn.Name = "trainBtn";
+            this.trainBtn.Size = new System.Drawing.Size(75, 20);
+            this.trainBtn.TabIndex = 6;
+            this.trainBtn.Text = "Train Data";
+            this.trainBtn.TextColor = System.Drawing.Color.White;
+            this.trainBtn.UseVisualStyleBackColor = false;
+            this.trainBtn.Visible = false;
+            this.trainBtn.Click += new System.EventHandler(this.TrainBtn_Click);
             // 
             // nrmDataBtn
             // 
@@ -67,7 +119,7 @@
             this.nrmDataBtn.TextColor = System.Drawing.Color.White;
             this.nrmDataBtn.UseVisualStyleBackColor = false;
             this.nrmDataBtn.Visible = false;
-            this.nrmDataBtn.Click += new System.EventHandler(this.nrmDataBtn_Click);
+            this.nrmDataBtn.Click += new System.EventHandler(this.NrmDataBtn_Click);
             // 
             // dataBtn
             // 
@@ -87,7 +139,7 @@
             this.dataBtn.TextColor = System.Drawing.Color.White;
             this.dataBtn.UseVisualStyleBackColor = false;
             this.dataBtn.Visible = false;
-            this.dataBtn.Click += new System.EventHandler(this.dataBtn_Click);
+            this.dataBtn.Click += new System.EventHandler(this.DataBtn_Click);
             // 
             // nrmBtn
             // 
@@ -107,7 +159,7 @@
             this.nrmBtn.TextColor = System.Drawing.Color.White;
             this.nrmBtn.UseVisualStyleBackColor = false;
             this.nrmBtn.Visible = false;
-            this.nrmBtn.Click += new System.EventHandler(this.nrmBtn_Click);
+            this.nrmBtn.Click += new System.EventHandler(this.NrmBtn_Click);
             // 
             // convertBtn
             // 
@@ -127,7 +179,7 @@
             this.convertBtn.TextColor = System.Drawing.Color.White;
             this.convertBtn.UseVisualStyleBackColor = false;
             this.convertBtn.Visible = false;
-            this.convertBtn.Click += new System.EventHandler(this.convertBtn_Click);
+            this.convertBtn.Click += new System.EventHandler(this.ConvertBtn_Click);
             // 
             // loadBtn
             // 
@@ -146,13 +198,16 @@
             this.loadBtn.Text = "Load";
             this.loadBtn.TextColor = System.Drawing.Color.White;
             this.loadBtn.UseVisualStyleBackColor = false;
-            this.loadBtn.Click += new System.EventHandler(this.roundButton1_Click);
+            this.loadBtn.Click += new System.EventHandler(this.RoundButton1_Click);
             // 
             // DataPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this.countTBox);
+            this.Controls.Add(this.testBtn);
+            this.Controls.Add(this.trainBtn);
             this.Controls.Add(this.nrmDataBtn);
             this.Controls.Add(this.dataBtn);
             this.Controls.Add(this.nrmBtn);
@@ -164,6 +219,7 @@
             this.Size = new System.Drawing.Size(1124, 700);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -175,5 +231,8 @@
         private RoundButton nrmBtn;
         private RoundButton dataBtn;
         private RoundButton nrmDataBtn;
+        private RoundButton trainBtn;
+        private RoundButton testBtn;
+        private System.Windows.Forms.TextBox countTBox;
     }
 }

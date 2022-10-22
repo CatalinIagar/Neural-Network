@@ -20,36 +20,42 @@ namespace Proiect3
                 return instance;
             }
         }
-        private void roundButton1_Click(object sender, EventArgs e)
+        private void RoundButton1_Click(object sender, EventArgs e)
         {
             dataGridView1.Visible = true;
             CurrentData.Instance.ReadFromFile();
             loadBtn.Enabled = false;
             convertBtn.Visible = true;
-            ShowData(CurrentData.Instance.getData());
+            ShowData(CurrentData.Instance.GetData());
         }
         private void ShowData(Object list)
         {
             dataGridView1.DataSource = list;
             dataGridView1.Refresh();
         }
-        private void nrmBtn_Click(object sender, EventArgs e)
+        private void NrmBtn_Click(object sender, EventArgs e)
         {
             CurrentData.Instance.Normalize();
-            ShowData(CurrentData.Instance.getNormData());
+            ShowData(CurrentData.Instance.GetNormData());
+            countTBox.Text = CurrentData.Instance.GetNormDataCount().ToString();
             this.nrmBtn.Enabled = false;
             dataBtn.Visible = true;
             nrmDataBtn.Visible = true;
+            trainBtn.Visible = true;
+            testBtn.Visible = true;
+            countTBox.Visible = true;
         }
-        private void dataBtn_Click(object sender, EventArgs e)
+        private void DataBtn_Click(object sender, EventArgs e)
         {
-            ShowData(CurrentData.Instance.getData());
+            ShowData(CurrentData.Instance.GetData());
+            countTBox.Text = CurrentData.Instance.GetDataCount().ToString();
         }
-        private void nrmDataBtn_Click(object sender, EventArgs e)
+        private void NrmDataBtn_Click(object sender, EventArgs e)
         {
-            ShowData(CurrentData.Instance.getNormData());
+            ShowData(CurrentData.Instance.GetNormData());
+            countTBox.Text = CurrentData.Instance.GetNormDataCount().ToString();
         }
-        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex == 0) MessageBox.Show("Client's age");
             if (e.ColumnIndex == 1) MessageBox.Show("Client's job");
@@ -69,12 +75,24 @@ namespace Proiect3
             if (e.ColumnIndex == 15) MessageBox.Show("Outcome of the previous marketing campaign");
             if (e.ColumnIndex == 16) MessageBox.Show("Has the client subscribed a term deposit?");
         }
-        private void convertBtn_Click(object sender, EventArgs e)
+        private void ConvertBtn_Click(object sender, EventArgs e)
         {
             this.convertBtn.Enabled = false;
             CurrentData.Instance.ConvertData();
-            ShowData(CurrentData.Instance.getNormData());
+            ShowData(CurrentData.Instance.GetNormData());
             this.nrmBtn.Visible = true;
+        }
+
+        private void TrainBtn_Click(object sender, EventArgs e)
+        {
+            ShowData(NetworkData.Instance.GetTrainingData());
+            countTBox.Text = NetworkData.Instance.GetTrainingCount().ToString();
+        }
+
+        private void TestBtn_Click(object sender, EventArgs e)
+        {
+            ShowData(NetworkData.Instance.GetTestingData());
+            countTBox.Text = NetworkData.Instance.GetTestingCount().ToString();
         }
     }
 }

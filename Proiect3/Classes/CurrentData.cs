@@ -25,13 +25,23 @@ namespace Proiect3.Classes
                 return instance;
             }
         }
-        public Object getData()
+        public Object GetData()
         {
             return this.dataList;
         }
-        public Object getNormData()
+        public Object GetNormData()
         {
             return this.normalizedData;
+        }
+
+        public int GetDataCount()
+        {
+            return dataList.Count;
+        }
+
+        public int GetNormDataCount()
+        {
+            return normalizedData.Count;
         }
         public void ReadFromFile()
         {
@@ -54,7 +64,6 @@ namespace Proiect3.Classes
 
                     dataList.Add(data);
                 }
-                Console.WriteLine("Data read succes");
             }
         }
         public void ConvertData()
@@ -85,7 +94,7 @@ namespace Proiect3.Classes
             }
         }
 
-        public (double max, double min) getMinMax(PropertyInfo property)
+        public (double max, double min) GetMinMax(PropertyInfo property)
         {
             double min = (double)property.GetValue(normalizedData[0], null);
             double max = (double)property.GetValue(normalizedData[0], null);
@@ -95,7 +104,6 @@ namespace Proiect3.Classes
                 if (min > value) min = value;
                 if (value > max) max = value;
             }
-            Console.WriteLine(max.ToString() + " " + min.ToString());
             return (max, min);
         }
         public void Normalize()
@@ -103,67 +111,27 @@ namespace Proiect3.Classes
 
             PropertyInfo[] properties = typeof(BankDataNormalised).GetProperties();
 
-            /*
-
-            double[] max = new double[properties.Count()];
-            double[] min = new double[properties.Count()];
-
-            max[0] = normalizedData.Max(r => r.Age);
-            min[0] = normalizedData.Min(r => r.Age);
-            max[1] = normalizedData.Max(r => r.Job);
-            min[1] = normalizedData.Min(r => r.Job);
-            max[2] = normalizedData.Max(r => r.MaritalStatus);
-            min[2] = normalizedData.Min(r => r.MaritalStatus);
-            max[3] = normalizedData.Max(r => r.Education);
-            min[3] = normalizedData.Min(r => r.Education);
-            max[4] = normalizedData.Max(r => r.IsDefault);
-            min[4] = normalizedData.Min(r => r.IsDefault);
-            max[5] = normalizedData.Max(r => r.Balance);
-            min[5] = normalizedData.Min(r => r.Balance);
-            max[6] = normalizedData.Max(r => r.Housing);
-            min[6] = normalizedData.Min(r => r.Housing);
-            max[7] = normalizedData.Max(r => r.Loan);
-            min[7] = normalizedData.Min(r => r.Loan);
-            max[8] = normalizedData.Max(r => r.Contact);
-            min[8] = normalizedData.Min(r => r.Contact);
-            max[9] = normalizedData.Max(r => r.Day);
-            min[9] = normalizedData.Min(r => r.Day);
-            max[10] = normalizedData.Max(r => r.Month);
-            min[10] = normalizedData.Min(r => r.Month);
-            max[11] = normalizedData.Max(r => r.Duration);
-            min[11] = normalizedData.Min(r => r.Duration);
-            max[12] = normalizedData.Max(r => r.Campaign);
-            min[12] = normalizedData.Min(r => r.Campaign);
-            max[13] = normalizedData.Max(r => r.Pdays);
-            min[13] = normalizedData.Min(r => r.Pdays);
-            max[14] = normalizedData.Max(r => r.Previous);
-            min[14] = normalizedData.Min(r => r.Previous);
-            max[15] = normalizedData.Max(r => r.Poutcome);
-            min[15] = normalizedData.Min(r => r.Poutcome);
-            max[16] = normalizedData.Max(r => r.Outcome);
-            min[16] = normalizedData.Min(r => r.Outcome);
-
-
-
-            foreach (var data in normalizedData)
-            {
-                int i = 0;
-                foreach (PropertyInfo property in properties)
-                {
-                    double value = (double)property.GetValue(data, null);
-                    property.SetValue(data, (value - min[i]) / (max[i] - min[i]));
-                    i++;
-                }
-            }*/
-
             foreach(PropertyInfo property in properties)
             {
-                var (max, min) = getMinMax(property);
+                var (max, min) = GetMinMax(property);
                 foreach(var data in normalizedData)
                 {
                     double value = (double)property.GetValue(data, null);
                     property.SetValue(data, (value - min) / (max - min));
                 }
+            }
+
+            SplitData();
+        }
+
+        private void SplitData()
+        {
+            Random random = new Random();
+            foreach(var data in normalizedData)
+            {
+                int number = random.Next(1, 100);
+                if (number <= 70) NetworkData.Instance.AddTrainingData(data);
+                if (number > 70) NetworkData.Instance.AddTestingData(data);
             }
         }
     }

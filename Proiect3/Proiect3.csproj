@@ -59,6 +59,7 @@
     <Compile Include="Classes\CurrentData.cs" />
     <Compile Include="Classes\DataEnums.cs" />
     <Compile Include="Classes\InputData.cs" />
+    <Compile Include="Classes\NetworkData.cs" />
     <Compile Include="Classes\RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
