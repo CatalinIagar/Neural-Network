@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Proiect3.NeuralNetwork
 {
-    internal class Neuron
+    public class Neuron
     {
+        public double[] inputValue;
+        public double[] weight;
+        public double input;
+        public double activation;
+        public double output;
     }
 }
