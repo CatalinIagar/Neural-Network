@@ -93,7 +93,6 @@ namespace Proiect3.Classes
                 normalizedData.Add(newData);
             }
         }
-
         public (double max, double min) GetMinMax(PropertyInfo property)
         {
             double min = (double)property.GetValue(normalizedData[0], null);
@@ -111,7 +110,7 @@ namespace Proiect3.Classes
 
             PropertyInfo[] properties = typeof(BankDataNormalised).GetProperties();
 
-            foreach(PropertyInfo property in properties)
+            foreach (PropertyInfo property in properties)
             {
                 var (max, min) = GetMinMax(property);
                 foreach(var data in normalizedData)

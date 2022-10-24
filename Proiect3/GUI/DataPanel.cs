@@ -6,6 +6,8 @@ namespace Proiect3
 {
     public partial class DataPanel : UserControl
     {
+
+        public RoundButton rb;
         private DataPanel() 
         {
             InitializeComponent();
@@ -20,6 +22,12 @@ namespace Proiect3
                 return instance;
             }
         }
+
+        internal void setForm(RoundButton rb)
+        {
+            this.rb = rb;
+        }
+
         private void RoundButton1_Click(object sender, EventArgs e)
         {
             dataGridView1.Visible = true;
@@ -44,6 +52,7 @@ namespace Proiect3
             trainBtn.Visible = true;
             testBtn.Visible = true;
             countTBox.Visible = true;
+            rb.Visible = true;
         }
         private void DataBtn_Click(object sender, EventArgs e)
         {

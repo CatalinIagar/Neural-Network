@@ -30,6 +30,7 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataBtn = new Proiect3.RoundButton();
+            this.generateBtn = new Proiect3.RoundButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,6 +40,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.generateBtn);
             this.panel1.Controls.Add(this.dataBtn);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -63,6 +65,26 @@
             this.dataBtn.TextColor = System.Drawing.Color.White;
             this.dataBtn.UseVisualStyleBackColor = false;
             // 
+            // generateBtn
+            // 
+            this.generateBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.generateBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.generateBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.generateBtn.BorderRadius = 25;
+            this.generateBtn.BorderSize = 0;
+            this.generateBtn.FlatAppearance.BorderSize = 0;
+            this.generateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.generateBtn.ForeColor = System.Drawing.Color.White;
+            this.generateBtn.Location = new System.Drawing.Point(217, 25);
+            this.generateBtn.Name = "generateBtn";
+            this.generateBtn.Size = new System.Drawing.Size(150, 50);
+            this.generateBtn.TabIndex = 1;
+            this.generateBtn.Text = "Neural Network";
+            this.generateBtn.TextColor = System.Drawing.Color.White;
+            this.generateBtn.UseVisualStyleBackColor = false;
+            this.generateBtn.Visible = false;
+            this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -83,6 +105,7 @@
 
         private System.Windows.Forms.Panel panel1;
         private RoundButton dataBtn;
+        private RoundButton generateBtn;
     }
 }
 

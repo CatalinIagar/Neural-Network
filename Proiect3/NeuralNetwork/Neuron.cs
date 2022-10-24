@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proiect3.Classes
+namespace Proiect3.NeuralNetwork
 {
-    internal class DataForm
+    internal class Neuron
     {
     }
 }

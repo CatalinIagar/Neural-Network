@@ -17,10 +17,24 @@ namespace Proiect3
         private void LoadDataPanel(object sender, EventArgs e)
         {
             DataPanel dataPanel = DataPanel.Instance;
+            dataPanel.setForm(this.generateBtn);
 
             this.Controls.Add(dataPanel);
         }
 
-        
+        private void generateBtn_Click(object sender, EventArgs e)
+        {
+            if (NeuralNetwork.NeuralNetwork.Instance.isGenerated == false)
+            {
+                GenerateNetwork generateNetwork = new GenerateNetwork();
+                generateNetwork.Show();
+            }
+            else
+            {
+                var result = MessageBox.Show("Ai facut deja o retea", "kaka",
+                                 MessageBoxButtons.YesNo,
+                                 MessageBoxIcon.Question);
+            }
+        }
     }
 }
