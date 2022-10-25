@@ -13,5 +13,6 @@ namespace Proiect3.NeuralNetwork
         public double input;
         public double activation;
         public double output;
+        public double targetOutput;
     }
 }

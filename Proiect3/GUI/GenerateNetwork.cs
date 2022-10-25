@@ -90,6 +90,7 @@ namespace Proiect3
             }
 
             NeuralNetwork.NeuralNetwork.Instance.GenerateNetwork(nLayers, nNeurons);
+            NeuralNetwork.NeuralNetwork.Instance.TrainNetowrk();
 
             this.DialogResult = DialogResult.OK;
             this.Close();

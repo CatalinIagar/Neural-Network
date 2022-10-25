@@ -31,7 +31,7 @@ namespace Proiect3
             }
             else
             {
-                var result = MessageBox.Show("Ai facut deja o retea", "kaka",
+                _ = MessageBox.Show("Ai facut deja o retea", "kaka",
                                  MessageBoxButtons.YesNo,
                                  MessageBoxIcon.Question);
             }

@@ -26,5 +26,11 @@ namespace Proiect3.Classes
         public double Previous { get; set; }
         public double Poutcome { get; set; }
         public double Outcome { get; set; }
+        public override string ToString()
+        {
+            return Age + " " + Job + " " + MaritalStatus + " " + Education + " " + IsDefault + " " + Balance + " " + Housing + " " +
+                Loan + " " + Contact + " " + Day + " " + Month + " " + Duration + " " + Campaign + " " + Pdays + " " +
+                Previous + " " + Poutcome + " " + Outcome;
+        }
     }
 }
