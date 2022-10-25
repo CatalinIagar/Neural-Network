@@ -13,8 +13,8 @@ namespace Proiect3.NeuralNetwork
     internal class NeuralNetwork
     {
 
-        public double learningRate;
-        public int epoch = 1;
+        public double learningRate = 0.2;
+        public int epoch = 15;
         public bool isGenerated = false;
         public List<NeuronLayer> layers = new List<NeuronLayer>();
 
@@ -58,18 +58,73 @@ namespace Proiect3.NeuralNetwork
             List <BankDataNormalised> trainingData = (List<BankDataNormalised>)NetworkData.Instance.GetTrainingData();
             for (int i = 0; i < epoch; i++)
             {
+                int j = 0;
                 foreach(BankDataNormalised data in trainingData)
                 {
                     LoadDataIntoNetowrk(data);
                     FeedForward();
+                    BackPropagation();
                     double error = CalculateError();
                     mse.Add(error);
-                    Console.WriteLine(error);
-                    //BackPropagation();
+                    //Console.WriteLine("data - " + j.ToString() + " " + error);
+                    j++;
+                    if (j == 100) break;
                 }
-                //double epochError = CalculateEpochError(mse);
-                //Console.WriteLine(epochError);
+
+                double epochError = CalculateEpochError(mse);
+                Console.WriteLine("Epoch " + i.ToString() + " " + epochError);
             }   
+        }
+
+        private double CalculateEpochError(List<double> mse)
+        {
+            double error = 0;
+            foreach(double value in mse)
+            {
+                error += value;
+            }
+            error /= mse.Count;
+            return error;
+        }
+
+        private void BackPropagation()
+        {
+            for(int i = layers.Count - 1; i >= 1; i--)
+            {
+                if(layers[i].layerType == Help.OUTPUT)
+                {
+                    foreach(Neuron neuron in layers[i].neurons)
+                    {
+                        double delta = (neuron.output - neuron.targetOutput) * neuron.activation * (1 - neuron.activation);
+                        neuron.delta = delta;
+                        for (int k = 0; k < neuron.weight.Length; k++)
+                        {
+                            double deltaWeight = this.learningRate * layers[i - 1].neurons[k].output * delta;
+                            neuron.weight[k] -= deltaWeight;
+                        }
+                    }
+                }
+                if(layers[i].layerType == Help.HIDDEN)
+                {
+                    for(int j = 0; j < layers[i].nOfNeurons; j++)
+                    {
+                        double deltaS = 0;
+                        List<double> deltaLayer = layers[i + 1].getDeltas();
+                        for(int k = 0; k < layers[i + 1].neurons.Count; k++)
+                        {
+                            deltaS += layers[i + 1].neurons[k].weight[j] * deltaLayer[k];
+                        }
+                        double delta = deltaS * layers[i].neurons[j].activation * (1 - layers[i].neurons[j].activation);
+                        layers[i].neurons[j].delta = delta;
+
+                        for (int k = 0; k < layers[i].neurons[j].weight.Length; k++)
+                        {
+                            double deltaWeight = this.learningRate * layers[i - 1].neurons[k].output * delta;
+                            layers[i].neurons[j].weight[k] -= deltaWeight;
+                        }
+                    }
+                }
+            }
         }
 
         private double CalculateError()

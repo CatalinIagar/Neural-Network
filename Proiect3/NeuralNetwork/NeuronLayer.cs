@@ -24,15 +24,25 @@ namespace Proiect3.NeuralNetwork
                 Neuron neuron = new Neuron();
                 Array.Resize(ref neuron.inputValue, prevCount);
                 Array.Resize(ref neuron.weight, prevCount);
-                Random random = new Random();
+                Random random = new Random(Help.SEED);
                 double maximum = 1;
                 double minimum = -1;
                 for(int j = 0; j < prevCount; j++)
                 {
-                    neuron.weight[j] = Math.Round(random.NextDouble() * (maximum - minimum) + minimum, 2);
+                    neuron.weight[j] = random.NextDouble() * (maximum - minimum) + minimum;
                 }
                 neurons.Add(neuron);
             }
+        }
+
+        public List<double> getDeltas()
+        {
+            List<double> deltas = new List<double>();
+            foreach(Neuron neuron in neurons)
+            {
+                deltas.Add(neuron.delta);
+            }
+            return deltas;
         }
 
         public void calculateOutput()

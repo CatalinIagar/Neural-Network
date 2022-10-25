@@ -51,7 +51,7 @@ namespace Proiect3.Classes
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    var values = line.Split(';');
+                    var values = line.Split(',');
 
 
                     BankData data = new BankData();
@@ -125,7 +125,7 @@ namespace Proiect3.Classes
 
         private void SplitData()
         {
-            Random random = new Random();
+            Random random = new Random(Help.SEED);
             foreach(var data in normalizedData)
             {
                 int number = random.Next(1, 100);

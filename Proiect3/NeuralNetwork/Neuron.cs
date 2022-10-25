@@ -10,6 +10,7 @@ namespace Proiect3.NeuralNetwork
     {
         public double[] inputValue;
         public double[] weight;
+        public double delta;
         public double input;
         public double activation;
         public double output;
