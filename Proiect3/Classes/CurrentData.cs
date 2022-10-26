@@ -125,7 +125,7 @@ namespace Proiect3.Classes
 
         private void SplitData()
         {
-            Random random = new Random(Help.SEED);
+            Random random = new Random();
             foreach(var data in normalizedData)
             {
                 int number = random.Next(1, 100);

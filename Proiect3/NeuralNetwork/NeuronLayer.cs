@@ -24,7 +24,7 @@ namespace Proiect3.NeuralNetwork
                 Neuron neuron = new Neuron();
                 Array.Resize(ref neuron.inputValue, prevCount);
                 Array.Resize(ref neuron.weight, prevCount);
-                Random random = new Random(Help.SEED);
+                Random random = new Random();
                 double maximum = 1;
                 double minimum = -1;
                 for(int j = 0; j < prevCount; j++)

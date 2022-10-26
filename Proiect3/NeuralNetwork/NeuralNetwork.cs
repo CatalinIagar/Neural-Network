@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Reflection;
+using System.ComponentModel;
 
 using Proiect3.Classes;
 
@@ -14,7 +15,7 @@ namespace Proiect3.NeuralNetwork
     {
 
         public double learningRate = 0.2;
-        public int epoch = 15;
+        public int epoch = 100;
         public bool isGenerated = false;
         public List<NeuronLayer> layers = new List<NeuronLayer>();
 
@@ -22,10 +23,14 @@ namespace Proiect3.NeuralNetwork
         public int outputCount = 1;
         public int nOfHiddenLayers;
 
+        public BackgroundWorker worker = new BackgroundWorker();
+
 
         private NeuralNetwork()
         {
-
+            worker.DoWork += worker_DoWork;
+            worker.ProgressChanged += worker_ProgressChanged;
+            worker.WorkerReportsProgress = true;
         }
         private static NeuralNetwork instance = null;
         public static NeuralNetwork Instance
@@ -36,7 +41,6 @@ namespace Proiect3.NeuralNetwork
                 return instance;
             }
         }
-
         public void GenerateNetwork(int nLayers, int[] nNeurons)
         {
             isGenerated = true;
@@ -52,23 +56,44 @@ namespace Proiect3.NeuralNetwork
             layers.Add(outputLayer);
         }
 
+        private void worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            List<double> mse = new List<double>();
+            List<BankDataNormalised> trainingData = (List<BankDataNormalised>)NetworkData.Instance.GetTrainingData();
+            for (int i = 0; i < epoch; i++)
+            {
+                foreach (BankDataNormalised data in trainingData)
+                {
+                    LoadDataIntoNetowrk(data);
+                    FeedForward();
+                    double error = CalculateError();
+                    mse.Add(error);
+                    BackPropagation();
+                }
+
+                double epochError = CalculateEpochError(mse);
+                worker.ReportProgress(i, epochError);
+            }
+        }
+
+        private void worker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        {
+            Console.WriteLine(e.UserState);
+        }
+
         public void TrainNetowrk()
         {
             List<double> mse = new List<double>();
             List <BankDataNormalised> trainingData = (List<BankDataNormalised>)NetworkData.Instance.GetTrainingData();
             for (int i = 0; i < epoch; i++)
             {
-                int j = 0;
                 foreach(BankDataNormalised data in trainingData)
                 {
                     LoadDataIntoNetowrk(data);
                     FeedForward();
-                    BackPropagation();
                     double error = CalculateError();
                     mse.Add(error);
-                    //Console.WriteLine("data - " + j.ToString() + " " + error);
-                    j++;
-                    if (j == 100) break;
+                    BackPropagation();
                 }
 
                 double epochError = CalculateEpochError(mse);
