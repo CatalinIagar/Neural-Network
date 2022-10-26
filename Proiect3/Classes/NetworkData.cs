@@ -9,7 +9,7 @@ namespace Proiect3.Classes
     internal class NetworkData
     {
         private readonly List<BankDataNormalised> trainingData = new List<BankDataNormalised>();
-        private readonly List<BankDataNormalised> testingData = new List<BankDataNormalised>();
+        private readonly List<BankDataTest> testingData = new List<BankDataTest>();
         private NetworkData()
         {
 
@@ -39,7 +39,29 @@ namespace Proiect3.Classes
         }
         public void AddTestingData(BankDataNormalised data)
         {
-            this.testingData.Add(data);
+            BankDataTest newData = new BankDataTest
+            {
+                Age = data.Age,
+                Job = data.Job,
+                MaritalStatus = data.MaritalStatus,
+                Education = data.Education,
+                IsDefault = data.IsDefault,
+                Balance = data.Balance,
+                Housing = data.Housing,
+                Loan = data.Loan,
+                Contact = data.Contact,
+                Day = data.Day,
+                Month = data.Month,
+                Duration = data.Duration,
+                Campaign = data.Campaign,
+                Pdays = data.Pdays,
+                Previous = data.Previous,
+                Poutcome = data.Poutcome,
+                Outcome = data.Outcome,
+                CurrentOutcome = 0,
+                Error = 0
+            };
+            this.testingData.Add(newData);
         }
 
         public int GetTrainingCount()

@@ -7,9 +7,12 @@ namespace Proiect3
     public partial class GenerateNetwork : Form
     {
         public int[] ReturnValue { get; set; }
-        public GenerateNetwork()
+        RoundButton rb;
+        public GenerateNetwork(RoundButton rb)
         {
             InitializeComponent();
+
+            this.rb = rb;
 
             this.MinimizeBox = false;
             this.MaximizeBox = false;
@@ -90,9 +93,8 @@ namespace Proiect3
             }
 
             NeuralNetwork.NeuralNetwork.Instance.GenerateNetwork(nLayers, nNeurons);
-            //NeuralNetwork.NeuralNetwork.Instance.worker.RunWorkerAsync();
-
-
+            rb.Visible = true;
+            
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

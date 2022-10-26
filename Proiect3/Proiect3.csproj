@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="Classes\BankData.cs" />
     <Compile Include="Classes\BankDataNormalised.cs" />
+    <Compile Include="Classes\BankDataTest.cs" />
     <Compile Include="Classes\CurrentData.cs" />
     <Compile Include="Classes\CustomProgressBar.cs">
       <SubType>Component</SubType>
@@ -66,6 +67,12 @@
     </Compile>
     <Compile Include="GUI\GraphPanel.Designer.cs">
       <DependentUpon>GraphPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TestPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\TestPanel.Designer.cs">
+      <DependentUpon>TestPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="NeuralNetwork\Help.cs" />
     <Compile Include="Classes\NetworkData.cs" />
@@ -106,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\GraphPanel.resx">
       <DependentUpon>GraphPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TestPanel.resx">
+      <DependentUpon>TestPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

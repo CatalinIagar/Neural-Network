@@ -25,6 +25,7 @@ namespace Proiect3.GUI
             this.DoubleBuffered = true;
 
             graph = zedGraphControl1.GraphPane;
+            graph.AddCurve("Epoch Error", pointPairs, Color.Red, SymbolType.None);
 
             graph.XAxis.Title.Text = "Epochs (0.01 = 1 epoch)";
             graph.YAxis.Title.Text = "Error";
@@ -99,8 +100,6 @@ namespace Proiect3.GUI
 
                 PointPair pointPair = new PointPair(progressPercentage * 0.01, value);
                 pointPairs.Add(pointPair);
-
-                graph.AddCurve("", pointPairs, Color.Red, SymbolType.None);
 
                 zedGraphControl1.AxisChange();
                 zedGraphControl1.Invalidate();

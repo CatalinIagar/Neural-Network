@@ -49,7 +49,7 @@ namespace Proiect3.NeuralNetwork
             NeuronLayer inputLayer = new NeuronLayer(inputCount, Help.INPUT, 1);
             layers.Add(inputLayer);
             this.nOfHiddenLayers = nLayers;
-            for(int i = 0; i < nLayers; i++)
+            for (int i = 0; i < nLayers; i++)
             {
                 NeuronLayer hiddenLayer = new NeuronLayer(nNeurons[i], Help.HIDDEN, layers[i].nOfNeurons);
                 layers.Add(hiddenLayer);
@@ -83,8 +83,20 @@ namespace Proiect3.NeuralNetwork
                 }
 
                 if (shouldStart == false) break;
-                
+
                 worker.ReportProgress(i, epochError);
+            }
+        }
+
+        public void TestData()
+        {
+            List<BankDataTest> dataList = (List<BankDataTest>)NetworkData.Instance.GetTestingData();
+            foreach (BankDataTest data in dataList)
+            {
+                LoadTestDataIntoNetowrk(data);
+                FeedForward();
+                data.CurrentOutcome = layers[layers.Count - 1].neurons[0].output;
+                data.Error = Math.Abs(data.Outcome - data.CurrentOutcome);
             }
         }
 
@@ -95,7 +107,7 @@ namespace Proiect3.NeuralNetwork
         private double CalculateEpochError(List<double> mse)
         {
             double error = 0;
-            foreach(double value in mse)
+            foreach (double value in mse)
             {
                 error += value;
             }
@@ -105,11 +117,11 @@ namespace Proiect3.NeuralNetwork
 
         private void BackPropagation()
         {
-            for(int i = layers.Count - 1; i >= 1; i--)
+            for (int i = layers.Count - 1; i >= 1; i--)
             {
-                if(layers[i].layerType == Help.OUTPUT)
+                if (layers[i].layerType == Help.OUTPUT)
                 {
-                    foreach(Neuron neuron in layers[i].neurons)
+                    foreach (Neuron neuron in layers[i].neurons)
                     {
                         double delta = (neuron.output - neuron.targetOutput) * neuron.activation * (1 - neuron.activation);
                         neuron.delta = delta;
@@ -120,13 +132,13 @@ namespace Proiect3.NeuralNetwork
                         }
                     }
                 }
-                if(layers[i].layerType == Help.HIDDEN)
+                if (layers[i].layerType == Help.HIDDEN)
                 {
-                    for(int j = 0; j < layers[i].nOfNeurons; j++)
+                    for (int j = 0; j < layers[i].nOfNeurons; j++)
                     {
                         double deltaS = 0;
                         List<double> deltaLayer = layers[i + 1].getDeltas();
-                        for(int k = 0; k < layers[i + 1].neurons.Count; k++)
+                        for (int k = 0; k < layers[i + 1].neurons.Count; k++)
                         {
                             deltaS += layers[i + 1].neurons[k].weight[j] * deltaLayer[k];
                         }
@@ -146,7 +158,7 @@ namespace Proiect3.NeuralNetwork
         private double CalculateError()
         {
             double sum = 0;
-            for(int i = 0; i < outputCount; i++)
+            for (int i = 0; i < outputCount; i++)
             {
                 sum += Math.Pow((getTargetOutput() - getOutput()), 2);
             }
@@ -178,7 +190,7 @@ namespace Proiect3.NeuralNetwork
             layers[nOfHiddenLayers + 1].calculateOutput();
         }
 
-        private void TransferData(NeuronLayer leftLayer ,NeuronLayer rightLayer)
+        private void TransferData(NeuronLayer leftLayer, NeuronLayer rightLayer)
         {
             for (int i = 0; i < rightLayer.neurons.Count; i++)
             {
@@ -192,36 +204,46 @@ namespace Proiect3.NeuralNetwork
         private void LoadDataIntoNetowrk(BankDataNormalised data)
         {
             PropertyInfo[] properties = typeof(BankDataNormalised).GetProperties();
-            foreach(NeuronLayer layer in layers)
+            foreach (NeuronLayer layer in layers)
             {
-                if(layer.layerType == Help.INPUT)
+                if (layer.layerType == Help.INPUT)
                 {
                     int i = 0;
-                    foreach(PropertyInfo property in properties)
+                    foreach (PropertyInfo property in properties)
                     {
                         if (property.Name == "Outcome") break;
                         layer.neurons[i].inputValue[0] = (double)property.GetValue(data, null);
                         i++;
                     }
                 }
-                if(layer.layerType == Help.OUTPUT)
+                if (layer.layerType == Help.OUTPUT)
                 {
                     layer.neurons[0].targetOutput = data.Outcome;
                 }
             }
         }
 
-        /*private async Task<double> CalculateErrorAsync()
+        private void LoadTestDataIntoNetowrk(BankDataTest data)
         {
-            for(int i = 0; i < epoch; i++)
+            PropertyInfo[] properties = typeof(BankDataTest).GetProperties();
+            foreach (NeuronLayer layer in layers)
             {
-                Task<double> calculateError = CalculateErrorAsync();
-                
-                currentError = await calculateError;
+                if (layer.layerType == Help.INPUT)
+                {
+                    int i = 0;
+                    foreach (PropertyInfo property in properties)
+                    {
+                        if (property.Name == "Outcome") break;
+                        layer.neurons[i].inputValue[0] = (double)property.GetValue(data, null);
+                        i++;
+                    }
+                }
+                if (layer.layerType == Help.OUTPUT)
+                {
+                    layer.neurons[0].targetOutput = data.Outcome;
+                }
 
-                Console.WriteLine(currentError);
             }
-            return -1;
-        }*/
+        }
     }
 }
