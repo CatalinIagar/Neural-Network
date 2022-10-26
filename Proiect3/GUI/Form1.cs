@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Proiect3.GUI;
+using System;
 using System.Windows.Forms;
 
 namespace Proiect3
 {
     public partial class Form1 : Form
     {
+        GraphPanel graphPanel;
+        DataPanel dataPanel;
         public Form1()
         {
             InitializeComponent();
@@ -14,11 +17,20 @@ namespace Proiect3
 
         }
 
+        private void LoadGraphPanel()
+        {
+            graphPanel = GraphPanel.Instance;
+
+            this.Controls.Remove(dataPanel);
+            this.Controls.Add(graphPanel);
+        }
+
         private void LoadDataPanel(object sender, EventArgs e)
         {
-            DataPanel dataPanel = DataPanel.Instance;
+            dataPanel = DataPanel.Instance;
             dataPanel.setForm(this.generateBtn);
 
+            this.Controls.Remove(graphPanel);
             this.Controls.Add(dataPanel);
         }
 
@@ -27,13 +39,12 @@ namespace Proiect3
             if (NeuralNetwork.NeuralNetwork.Instance.isGenerated == false)
             {
                 GenerateNetwork generateNetwork = new GenerateNetwork();
-                generateNetwork.Show();
+                var result = generateNetwork.ShowDialog();
+                if (result == DialogResult.OK) LoadGraphPanel();
             }
             else
             {
-                _ = MessageBox.Show("Ai facut deja o retea", "kaka",
-                                 MessageBoxButtons.YesNo,
-                                 MessageBoxIcon.Question);
+                LoadGraphPanel();
             }
         }
     }

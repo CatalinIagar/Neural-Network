@@ -28,7 +28,7 @@ namespace Proiect3.NeuralNetwork
                 double maximum = 1;
                 double minimum = -1;
                 for(int j = 0; j < prevCount; j++)
-                {
+                { 
                     neuron.weight[j] = random.NextDouble() * (maximum - minimum) + minimum;
                 }
                 neurons.Add(neuron);

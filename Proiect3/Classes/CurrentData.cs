@@ -61,7 +61,6 @@ namespace Proiect3.Classes
                         property.SetValue(data, values[i]);
                         i++;
                     }
-
                     dataList.Add(data);
                 }
             }

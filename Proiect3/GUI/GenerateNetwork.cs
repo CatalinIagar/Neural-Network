@@ -90,8 +90,8 @@ namespace Proiect3
             }
 
             NeuralNetwork.NeuralNetwork.Instance.GenerateNetwork(nLayers, nNeurons);
-            //NeuralNetwork.NeuralNetwork.Instance.TrainNetowrk();
-            NeuralNetwork.NeuralNetwork.Instance.worker.RunWorkerAsync();
+            //NeuralNetwork.NeuralNetwork.Instance.worker.RunWorkerAsync();
+
 
             this.DialogResult = DialogResult.OK;
             this.Close();
