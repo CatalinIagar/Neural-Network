@@ -91,13 +91,17 @@ namespace Proiect3.NeuralNetwork
         public void TestData()
         {
             List<BankDataTest> dataList = (List<BankDataTest>)NetworkData.Instance.GetTestingData();
+            double score = 0;
             foreach (BankDataTest data in dataList)
             {
                 LoadTestDataIntoNetowrk(data);
                 FeedForward();
                 data.CurrentOutcome = layers[layers.Count - 1].neurons[0].output;
                 data.Error = Math.Abs(data.Outcome - data.CurrentOutcome);
+                if(data.Error < targetError) score++;
             }
+            score = (score / dataList.Count()) * 100;
+            TestPanel.Instance.SetPrecision(score);
         }
 
         private void worker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)

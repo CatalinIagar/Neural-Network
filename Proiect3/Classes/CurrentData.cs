@@ -45,7 +45,7 @@ namespace Proiect3.Classes
         }
         public void ReadFromFile()
         {
-            using (var reader = new StreamReader(@"C:\Faculta\Ai\Proiect3\Proiect3\resources\bank.csv"))
+            using (var reader = new StreamReader(@"C:\Faculta\Ai\Proiect3\Proiect3\resources\bank - Copy.csv"))
             {
                 PropertyInfo[] properties = typeof(BankData).GetProperties();
                 while (!reader.EndOfStream)
@@ -87,7 +87,7 @@ namespace Proiect3.Classes
                     Pdays = System.Convert.ToDouble(data.Pdays),
                     Previous = System.Convert.ToDouble(data.Previous),
                     Poutcome = System.Convert.ToDouble(Enum.Parse(typeof(DataEnums.PrevoisOutcome), data.Poutcome)),
-                    Outcome = System.Convert.ToDouble(Enum.Parse(typeof(DataEnums.Outcome), data.Outcome)),
+                    Outcome = System.Convert.ToDouble(Enum.Parse(typeof(DataEnums.Outcome), data.Outcome))
                 };
                 normalizedData.Add(newData);
             }
@@ -116,6 +116,18 @@ namespace Proiect3.Classes
                 {
                     double value = (double)property.GetValue(data, null);
                     property.SetValue(data, (value - min) / (max - min));
+
+                    if(property.Name == "Outcome")
+                    {
+                        if((double)property.GetValue(data, null) == 0)
+                        {
+                            property.SetValue(data, 0.001);
+                        }
+                        else
+                        {
+                            property.SetValue(data, 0.999);
+                        }
+                    }
                 }
             }
 

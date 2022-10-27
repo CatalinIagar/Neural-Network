@@ -36,5 +36,10 @@ namespace Proiect3.GUI
             dataGridView1.DataSource = NetworkData.Instance.GetTestingData();
             dataGridView1.Invalidate();
         }
+
+        internal void SetPrecision(double score)
+        {
+            customProgressBar1.Value = (int)score;
+        }
     }
 }

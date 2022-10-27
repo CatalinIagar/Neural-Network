@@ -136,6 +136,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="resources\bank - Copy.csv" />
     <None Include="resources\bank-full.csv" />
     <None Include="resources\bank.csv" />
   </ItemGroup>

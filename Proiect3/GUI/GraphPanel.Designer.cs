@@ -38,9 +38,9 @@
             this.errorValue = new System.Windows.Forms.NumericUpDown();
             this.epochValue = new System.Windows.Forms.NumericUpDown();
             this.currentErrorValue = new System.Windows.Forms.NumericUpDown();
+            this.progressBar = new Proiect3.Classes.CustomProgressBar();
             this.stopBtn = new Proiect3.RoundButton();
             this.startBtn = new Proiect3.RoundButton();
-            this.progressBar = new Proiect3.Classes.CustomProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.learningValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epochValue)).BeginInit();
@@ -131,7 +131,7 @@
             // 
             // errorValue
             // 
-            this.errorValue.DecimalPlaces = 2;
+            this.errorValue.DecimalPlaces = 4;
             this.errorValue.Increment = new decimal(new int[] {
             1,
             0,
@@ -147,7 +147,7 @@
             1,
             0,
             0,
-            131072});
+            262144});
             this.errorValue.Name = "errorValue";
             this.errorValue.Size = new System.Drawing.Size(120, 20);
             this.errorValue.TabIndex = 7;
@@ -188,6 +188,15 @@
             this.currentErrorValue.Size = new System.Drawing.Size(120, 20);
             this.currentErrorValue.TabIndex = 9;
             // 
+            // progressBar
+            // 
+            this.progressBar.CustomText = null;
+            this.progressBar.DisplayStyle = Proiect3.Classes.ProgressBarDisplayText.Percentage;
+            this.progressBar.Location = new System.Drawing.Point(17, 481);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(1090, 25);
+            this.progressBar.TabIndex = 12;
+            // 
             // stopBtn
             // 
             this.stopBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
@@ -225,15 +234,6 @@
             this.startBtn.TextColor = System.Drawing.Color.White;
             this.startBtn.UseVisualStyleBackColor = false;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
-            // 
-            // progressBar
-            // 
-            this.progressBar.CustomText = null;
-            this.progressBar.DisplayStyle = Proiect3.Classes.ProgressBarDisplayText.Percentage;
-            this.progressBar.Location = new System.Drawing.Point(17, 481);
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(1090, 25);
-            this.progressBar.TabIndex = 12;
             // 
             // GraphPanel
             // 
