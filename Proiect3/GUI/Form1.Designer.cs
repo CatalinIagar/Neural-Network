@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.testBtn = new Proiect3.RoundButton();
             this.generateBtn = new Proiect3.RoundButton();
             this.dataBtn = new Proiect3.RoundButton();
-            this.testBtn = new Proiect3.RoundButton();
+            this.inputBtn = new Proiect3.RoundButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,6 +42,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.inputBtn);
             this.panel1.Controls.Add(this.testBtn);
             this.panel1.Controls.Add(this.generateBtn);
             this.panel1.Controls.Add(this.dataBtn);
@@ -48,6 +50,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1108, 100);
             this.panel1.TabIndex = 0;
+            // 
+            // testBtn
+            // 
+            this.testBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.testBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.testBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.testBtn.BorderRadius = 25;
+            this.testBtn.BorderSize = 0;
+            this.testBtn.FlatAppearance.BorderSize = 0;
+            this.testBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.testBtn.ForeColor = System.Drawing.Color.White;
+            this.testBtn.Location = new System.Drawing.Point(398, 25);
+            this.testBtn.Name = "testBtn";
+            this.testBtn.Size = new System.Drawing.Size(150, 50);
+            this.testBtn.TabIndex = 2;
+            this.testBtn.Text = "Test Network";
+            this.testBtn.TextColor = System.Drawing.Color.White;
+            this.testBtn.UseVisualStyleBackColor = false;
+            this.testBtn.Visible = false;
+            this.testBtn.Click += new System.EventHandler(this.testBtn_Click);
             // 
             // generateBtn
             // 
@@ -87,25 +109,25 @@
             this.dataBtn.TextColor = System.Drawing.Color.White;
             this.dataBtn.UseVisualStyleBackColor = false;
             // 
-            // testBtn
+            // inputBtn
             // 
-            this.testBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.testBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.testBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.testBtn.BorderRadius = 25;
-            this.testBtn.BorderSize = 0;
-            this.testBtn.FlatAppearance.BorderSize = 0;
-            this.testBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.testBtn.ForeColor = System.Drawing.Color.White;
-            this.testBtn.Location = new System.Drawing.Point(398, 25);
-            this.testBtn.Name = "testBtn";
-            this.testBtn.Size = new System.Drawing.Size(150, 50);
-            this.testBtn.TabIndex = 2;
-            this.testBtn.Text = "Test Network";
-            this.testBtn.TextColor = System.Drawing.Color.White;
-            this.testBtn.UseVisualStyleBackColor = false;
-            this.testBtn.Visible = false;
-            this.testBtn.Click += new System.EventHandler(this.testBtn_Click);
+            this.inputBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.inputBtn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.inputBtn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.inputBtn.BorderRadius = 25;
+            this.inputBtn.BorderSize = 0;
+            this.inputBtn.FlatAppearance.BorderSize = 0;
+            this.inputBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inputBtn.ForeColor = System.Drawing.Color.White;
+            this.inputBtn.Location = new System.Drawing.Point(583, 25);
+            this.inputBtn.Name = "inputBtn";
+            this.inputBtn.Size = new System.Drawing.Size(150, 50);
+            this.inputBtn.TabIndex = 3;
+            this.inputBtn.Text = "Test Input";
+            this.inputBtn.TextColor = System.Drawing.Color.White;
+            this.inputBtn.UseVisualStyleBackColor = false;
+            this.inputBtn.Visible = false;
+            this.inputBtn.Click += new System.EventHandler(this.inputBtn_Click);
             // 
             // Form1
             // 
@@ -129,6 +151,7 @@
         private RoundButton dataBtn;
         private RoundButton generateBtn;
         private RoundButton testBtn;
+        private RoundButton inputBtn;
     }
 }
 

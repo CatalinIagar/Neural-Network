@@ -121,11 +121,11 @@ namespace Proiect3.Classes
                     {
                         if((double)property.GetValue(data, null) == 0)
                         {
-                            property.SetValue(data, 0.001);
+                            property.SetValue(data, 0.00000001);
                         }
                         else
                         {
-                            property.SetValue(data, 0.999);
+                            property.SetValue(data, 0.99999999);
                         }
                     }
                 }

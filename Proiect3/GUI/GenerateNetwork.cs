@@ -8,11 +8,13 @@ namespace Proiect3
     {
         public int[] ReturnValue { get; set; }
         RoundButton rb;
-        public GenerateNetwork(RoundButton rb)
+        RoundButton rb2;
+        public GenerateNetwork(RoundButton rb, RoundButton inputBtn)
         {
             InitializeComponent();
 
             this.rb = rb;
+            this.rb2 = inputBtn;
 
             this.MinimizeBox = false;
             this.MaximizeBox = false;
@@ -94,6 +96,7 @@ namespace Proiect3
 
             NeuralNetwork.NeuralNetwork.Instance.GenerateNetwork(nLayers, nNeurons);
             rb.Visible = true;
+            rb2.Visible = true;
             
             this.DialogResult = DialogResult.OK;
             this.Close();

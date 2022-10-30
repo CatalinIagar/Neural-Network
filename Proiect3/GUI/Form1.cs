@@ -9,6 +9,7 @@ namespace Proiect3
         GraphPanel graphPanel;
         DataPanel dataPanel;
         TestPanel testPanel;
+        InputPanel inputPanel;
         public Form1()
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace Proiect3
 
             this.Controls.Remove(dataPanel);
             this.Controls.Remove(testPanel);
+            this.Controls.Remove(inputPanel);
             this.Controls.Add(graphPanel);
         }
 
@@ -34,6 +36,7 @@ namespace Proiect3
 
             this.Controls.Remove(graphPanel);
             this.Controls.Remove(testPanel);
+            this.Controls.Remove(inputPanel);
             this.Controls.Add(dataPanel);
         }
 
@@ -41,7 +44,7 @@ namespace Proiect3
         {
             if (NeuralNetwork.NeuralNetwork.Instance.isGenerated == false)
             {
-                GenerateNetwork generateNetwork = new GenerateNetwork(this.testBtn);
+                GenerateNetwork generateNetwork = new GenerateNetwork(this.testBtn, this.inputBtn);
                 var result = generateNetwork.ShowDialog();
                 if (result == DialogResult.OK) LoadGraphPanel();
             }
@@ -57,7 +60,18 @@ namespace Proiect3
 
             this.Controls.Remove(graphPanel);
             this.Controls.Remove(dataPanel);
+            this.Controls.Remove(inputPanel);
             this.Controls.Add(testPanel);
+        }
+
+        private void inputBtn_Click(object sender, EventArgs e)
+        {
+            inputPanel = InputPanel.Instance;
+
+            this.Controls.Remove(graphPanel);
+            this.Controls.Remove(dataPanel);
+            this.Controls.Remove(testPanel);
+            this.Controls.Add(inputPanel);
         }
     }
 }

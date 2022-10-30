@@ -58,6 +58,17 @@ namespace Proiect3.NeuralNetwork
             layers.Add(outputLayer);
         }
 
+        public double testInputData(BankDataNormalised data)
+        {
+            LoadDataIntoNetowrk(data);
+            FeedForward();
+            foreach(NeuronLayer layer in layers)
+            {
+                if (layer.layerType == Help.OUTPUT) return layer.neurons[0].output;
+            }
+            return -1;
+        }
+
         private void worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             List<double> mse = new List<double>();
