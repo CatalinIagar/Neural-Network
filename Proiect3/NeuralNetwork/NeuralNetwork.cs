@@ -30,8 +30,8 @@ namespace Proiect3.NeuralNetwork
         public BackgroundWorker worker = new BackgroundWorker();
         private NeuralNetwork()
         {
-            worker.DoWork += worker_DoWork;
-            worker.ProgressChanged += worker_ProgressChanged;
+            worker.DoWork += Worker_DoWork;
+            worker.ProgressChanged += Worker_ProgressChanged;
             worker.WorkerReportsProgress = true;
         }
         private static NeuralNetwork instance = null;
@@ -58,7 +58,7 @@ namespace Proiect3.NeuralNetwork
             layers.Add(outputLayer);
         }
 
-        public double testInputData(BankDataNormalised data)
+        public double TestInputData(BankDataNormalised data)
         {
             LoadDataIntoNetowrk(data);
             FeedForward();
@@ -69,7 +69,7 @@ namespace Proiect3.NeuralNetwork
             return -1;
         }
 
-        private void worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        private void Worker_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
         {
             List<double> mse = new List<double>();
             List<BankDataNormalised> trainingData = (List<BankDataNormalised>)NetworkData.Instance.GetTrainingData();
@@ -115,7 +115,7 @@ namespace Proiect3.NeuralNetwork
             TestPanel.Instance.SetPrecision(score);
         }
 
-        private void worker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
+        private void Worker_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             GraphPanel.Instance.UpdateProgressBar(e.ProgressPercentage, e.UserState);
         }
@@ -152,7 +152,7 @@ namespace Proiect3.NeuralNetwork
                     for (int j = 0; j < layers[i].nOfNeurons; j++)
                     {
                         double deltaS = 0;
-                        List<double> deltaLayer = layers[i + 1].getDeltas();
+                        List<double> deltaLayer = layers[i + 1].GetDeltas();
                         for (int k = 0; k < layers[i + 1].neurons.Count; k++)
                         {
                             deltaS += layers[i + 1].neurons[k].weight[j] * deltaLayer[k];
@@ -175,34 +175,34 @@ namespace Proiect3.NeuralNetwork
             double sum = 0;
             for (int i = 0; i < outputCount; i++)
             {
-                sum += Math.Pow((getTargetOutput() - getOutput()), 2);
+                sum += Math.Pow((GetTargetOutput() - GetOutput()), 2);
             }
-            sum = sum / (2 * outputCount);
+            sum /= (2 * outputCount);
             return sum;
         }
 
-        public double getOutput()
+        public double GetOutput()
         {
             return layers[nOfHiddenLayers + 1].neurons[outputCount - 1].output;
         }
 
-        public double getTargetOutput()
+        public double GetTargetOutput()
         {
             return layers[nOfHiddenLayers + 1].neurons[outputCount - 1].targetOutput;
         }
 
         private void FeedForward()
         {
-            layers[0].calculateOutput();
+            layers[0].CalculateOutput();
             TransferData(layers[0], layers[1]);
 
             for (int i = 1; i <= nOfHiddenLayers; i++)
             {
-                layers[i].calculateOutput();
+                layers[i].CalculateOutput();
                 TransferData(layers[i], layers[i + 1]);
             }
 
-            layers[nOfHiddenLayers + 1].calculateOutput();
+            layers[nOfHiddenLayers + 1].CalculateOutput();
         }
 
         private void TransferData(NeuronLayer leftLayer, NeuronLayer rightLayer)

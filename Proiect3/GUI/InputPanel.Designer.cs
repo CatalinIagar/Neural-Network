@@ -411,7 +411,7 @@
             this.resultBtn.Text = "Show Result";
             this.resultBtn.TextColor = System.Drawing.Color.White;
             this.resultBtn.UseVisualStyleBackColor = false;
-            this.resultBtn.Click += new System.EventHandler(this.resultBtn_Click);
+            this.resultBtn.Click += new System.EventHandler(this.ResultBtn_Click);
             // 
             // InputPanel
             // 

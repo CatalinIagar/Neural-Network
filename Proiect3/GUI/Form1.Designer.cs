@@ -69,7 +69,7 @@
             this.testBtn.TextColor = System.Drawing.Color.White;
             this.testBtn.UseVisualStyleBackColor = false;
             this.testBtn.Visible = false;
-            this.testBtn.Click += new System.EventHandler(this.testBtn_Click);
+            this.testBtn.Click += new System.EventHandler(this.TestBtn_Click);
             // 
             // generateBtn
             // 
@@ -89,7 +89,7 @@
             this.generateBtn.TextColor = System.Drawing.Color.White;
             this.generateBtn.UseVisualStyleBackColor = false;
             this.generateBtn.Visible = false;
-            this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
+            this.generateBtn.Click += new System.EventHandler(this.GenerateBtn_Click);
             // 
             // dataBtn
             // 
@@ -127,7 +127,7 @@
             this.inputBtn.TextColor = System.Drawing.Color.White;
             this.inputBtn.UseVisualStyleBackColor = false;
             this.inputBtn.Visible = false;
-            this.inputBtn.Click += new System.EventHandler(this.inputBtn_Click);
+            this.inputBtn.Click += new System.EventHandler(this.InputBtn_Click);
             // 
             // Form1
             // 

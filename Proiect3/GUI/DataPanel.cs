@@ -23,7 +23,7 @@ namespace Proiect3
             }
         }
 
-        internal void setForm(RoundButton rb)
+        internal void SetForm(RoundButton rb)
         {
             this.rb = rb;
         }

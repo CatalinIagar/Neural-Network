@@ -35,7 +35,7 @@ namespace Proiect3.NeuralNetwork
             }
         }
 
-        public List<double> getDeltas()
+        public List<double> GetDeltas()
         {
             List<double> deltas = new List<double>();
             foreach(Neuron neuron in neurons)
@@ -45,7 +45,7 @@ namespace Proiect3.NeuralNetwork
             return deltas;
         }
 
-        public void calculateOutput()
+        public void CalculateOutput()
         {
             if(layerType == Help.INPUT)
             {
@@ -58,19 +58,19 @@ namespace Proiect3.NeuralNetwork
             {
                 foreach(Neuron neuron in neurons)
                 {
-                    calculateInputValue(neuron);
-                    calculateActivationValue(neuron);
-                    calculateOutputValue(neuron);
+                    CalculateInputValue(neuron);
+                    CalculateActivationValue(neuron);
+                    CalculateOutputValue(neuron);
                 }
             }
         }
 
-        private void calculateOutputValue(Neuron neuron)
+        private void CalculateOutputValue(Neuron neuron)
         {
             neuron.output = neuron.activation;
         }
 
-        private void calculateActivationValue(Neuron neuron)
+        private void CalculateActivationValue(Neuron neuron)
         {
             double numarator = 1f;
             double numitor = 1 + Math.Exp(-1 * neuron.input);
@@ -79,7 +79,7 @@ namespace Proiect3.NeuralNetwork
             neuron.activation = act;
         }
 
-        private void calculateInputValue(Neuron neuron)
+        private void CalculateInputValue(Neuron neuron)
         {
             double sum = 0;
             for (int i = 0; i < neuron.inputValue.Length; i++)

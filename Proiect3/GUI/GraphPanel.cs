@@ -17,8 +17,8 @@ namespace Proiect3.GUI
 {
     public partial class GraphPanel : UserControl
     {
-        GraphPane graph;
-        PointPairList pointPairs = new PointPairList();
+        readonly GraphPane graph;
+        readonly PointPairList pointPairs = new PointPairList();
         private GraphPanel()
         {
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace Proiect3.GUI
             }
         }
 
-        private void startBtn_Click(object sender, EventArgs e)
+        private void StartBtn_Click(object sender, EventArgs e)
         {
             this.startBtn.Enabled = false;
 
@@ -108,7 +108,7 @@ namespace Proiect3.GUI
             }
         }
 
-        private void stopBtn_Click(object sender, EventArgs e)
+        private void StopBtn_Click(object sender, EventArgs e)
         {
             RestartUI();
         }

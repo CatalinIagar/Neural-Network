@@ -32,7 +32,7 @@ namespace Proiect3
         private void LoadDataPanel(object sender, EventArgs e)
         {
             dataPanel = DataPanel.Instance;
-            dataPanel.setForm(this.generateBtn);
+            dataPanel.SetForm(this.generateBtn);
 
             this.Controls.Remove(graphPanel);
             this.Controls.Remove(testPanel);
@@ -40,7 +40,7 @@ namespace Proiect3
             this.Controls.Add(dataPanel);
         }
 
-        private void generateBtn_Click(object sender, EventArgs e)
+        private void GenerateBtn_Click(object sender, EventArgs e)
         {
             if (NeuralNetwork.NeuralNetwork.Instance.isGenerated == false)
             {
@@ -54,7 +54,7 @@ namespace Proiect3
             }
         }
 
-        private void testBtn_Click(object sender, EventArgs e)
+        private void TestBtn_Click(object sender, EventArgs e)
         {
             testPanel = TestPanel.Instance;
 
@@ -64,7 +64,7 @@ namespace Proiect3
             this.Controls.Add(testPanel);
         }
 
-        private void inputBtn_Click(object sender, EventArgs e)
+        private void InputBtn_Click(object sender, EventArgs e)
         {
             inputPanel = InputPanel.Instance;
 

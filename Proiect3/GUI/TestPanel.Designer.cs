@@ -61,7 +61,7 @@
             this.testBtn.Text = "Test Network";
             this.testBtn.TextColor = System.Drawing.Color.White;
             this.testBtn.UseVisualStyleBackColor = false;
-            this.testBtn.Click += new System.EventHandler(this.testBtn_Click);
+            this.testBtn.Click += new System.EventHandler(this.TestBtn_Click);
             // 
             // label1
             // 

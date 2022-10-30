@@ -7,8 +7,9 @@ namespace Proiect3
     public partial class GenerateNetwork : Form
     {
         public int[] ReturnValue { get; set; }
-        RoundButton rb;
-        RoundButton rb2;
+
+        readonly RoundButton rb;
+        readonly RoundButton rb2;
         public GenerateNetwork(RoundButton rb, RoundButton inputBtn)
         {
             InitializeComponent();

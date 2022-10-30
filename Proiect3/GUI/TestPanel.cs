@@ -30,7 +30,7 @@ namespace Proiect3.GUI
             }
         }
 
-        private void testBtn_Click(object sender, EventArgs e)
+        private void TestBtn_Click(object sender, EventArgs e)
         {
             NeuralNetwork.NeuralNetwork.Instance.TestData();
             dataGridView1.DataSource = NetworkData.Instance.GetTestingData();

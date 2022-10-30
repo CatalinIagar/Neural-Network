@@ -214,7 +214,7 @@
             this.stopBtn.Text = "Stop";
             this.stopBtn.TextColor = System.Drawing.Color.White;
             this.stopBtn.UseVisualStyleBackColor = false;
-            this.stopBtn.Click += new System.EventHandler(this.stopBtn_Click);
+            this.stopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
             // startBtn
             // 
@@ -233,7 +233,7 @@
             this.startBtn.Text = "Start";
             this.startBtn.TextColor = System.Drawing.Color.White;
             this.startBtn.UseVisualStyleBackColor = false;
-            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
+            this.startBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // GraphPanel
             // 

@@ -11,6 +11,5 @@ namespace Proiect3.Classes
         public static readonly string INPUT = "Input";
         public static readonly string HIDDEN = "Hidden";
         public static readonly string OUTPUT = "Output";
-        internal static readonly int SEED = 77;
     }
 }

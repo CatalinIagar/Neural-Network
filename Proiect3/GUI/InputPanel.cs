@@ -41,7 +41,7 @@ namespace Proiect3.GUI
             poutValue.DataSource = Enum.GetValues(typeof(DataEnums.PrevoisOutcome));
         }
 
-        private void resultBtn_Click(object sender, EventArgs e)
+        private void ResultBtn_Click(object sender, EventArgs e)
         {
             BankData data = new BankData
             {

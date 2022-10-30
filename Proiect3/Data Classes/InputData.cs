@@ -47,7 +47,7 @@ namespace Proiect3.Classes
             };
 
             normalised = Normalize(normalised);
-            return NeuralNetwork.NeuralNetwork.Instance.testInputData(normalised);
+            return NeuralNetwork.NeuralNetwork.Instance.TestInputData(normalised);
         }
 
         public BankDataNormalised Normalize(BankDataNormalised normalised)
